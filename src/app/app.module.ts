@@ -13,6 +13,9 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from "@angular/material/button";
+
 
 const config = {
   apiKey: "AIzaSyCYnUcidk6OweXUJjlET_6GfkzWc1u83EA",
@@ -41,6 +44,8 @@ const config = {
     AngularFireStorageModule, BrowserAnimationsModule, // storage
     FormsModule,
     ReactiveFormsModule,
+    MatToolbarModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -18,18 +18,21 @@ import { AuthPageComponent } from '../auth-page/auth-page.component';
 export class AuthService {
 
   user$!: Observable<any>;
+  public isLoggedIn!: boolean;
 
   constructor(
     private afAuth : AngularFireAuth,
     private afs : AngularFirestore,
-    private router : Router
+    private router : Router,
   ) { 
     this.user$ = this.afAuth.authState.pipe(
       switchMap(user=>{
         if(user){
+          this.isLoggedIn=true;
           return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
         } else {
           // Logged Out
+          this.isLoggedIn=false;
           return of(null);
         }
       })
@@ -39,6 +42,7 @@ export class AuthService {
    async googleSignIn() {
      const provider = new firebase.auth.GoogleAuthProvider();
      const credential = await this.afAuth.signInWithPopup(provider);
+     this.router.navigate(['home']);
      return this.updateUserData(credential.user);
    }
 

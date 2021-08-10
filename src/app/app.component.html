@@ -1,2 +1,8 @@
+<mat-toolbar color="primary">
+    <span>Vaccination Application</span>
+    <div class="spacer"></div>
+    <button mat-flat-button color="accent" (click)="auth.signOut()" [hidden]="!auth.isLoggedIn" >Log Out</button>
+    <button mat-flat-button color="accent" (click)="auth.googleSignIn()" [hidden]="auth.isLoggedIn" >Log In</button>
+</mat-toolbar>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
 <router-outlet></router-outlet>
