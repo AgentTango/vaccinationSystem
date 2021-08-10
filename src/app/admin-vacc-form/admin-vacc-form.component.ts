@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog } from "@angular/material/dialog";
+import { FirebaseServiceService } from "../services/firebase-service.service";
+
 
 @Component({
   selector: 'app-admin-vacc-form',
@@ -10,8 +14,8 @@ export class AdminVaccFormComponent implements OnInit {
 
   myform!: FormGroup;
   bloodGroupOptions!:string[];
-  firstName!: FormControl;
-  lastName!: FormControl;
+  name!: FormControl;
+  // lastName!: FormControl;
   dob!: FormControl;
   gender!:FormControl;
   birthLocation!:FormControl;
@@ -20,15 +24,17 @@ export class AdminVaccFormComponent implements OnInit {
   weight!:FormControl;
 
 
+  constructor(private patientService:FirebaseServiceService){}
 
   ngOnInit(){
     this.createFormControls();
     this.createForm();
+    this.patientService.patient();
   }
 
   createFormControls(){
-    this.firstName = new FormControl('', Validators.required);
-    this.lastName = new FormControl('', Validators.required);
+    this.name = new FormControl('', Validators.required);
+    // this.lastName = new FormControl('', Validators.required);
     this.dob = new FormControl('', [
       Validators.required,
     ]);
@@ -45,10 +51,8 @@ export class AdminVaccFormComponent implements OnInit {
 
   createForm(){
     this.myform = new FormGroup({
-      name: new FormGroup({
-        firstName: this.firstName,
-        lastName: this.lastName,
-      }),
+      name: this.name,
+      // lastName: this.lastName,
       dob: this.dob,
       gender: this.gender,
       birthLocation: this.birthLocation,
@@ -60,7 +64,8 @@ export class AdminVaccFormComponent implements OnInit {
 
   onRegister(){
     //send to firebase
-    console.log(this.myform.value)
+    this.patientService.addPatient(this.myform.value);
+    console.log(this.myform.value);
   }
 
 }
