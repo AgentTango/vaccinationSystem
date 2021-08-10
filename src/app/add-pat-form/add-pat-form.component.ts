@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from "@angular/material/dialog";
 import { FirebaseServiceService } from "../services/firebase-service.service";
 import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-pat-form',
@@ -29,7 +30,7 @@ export class AddPatFormComponent implements OnInit {
   weight!:FormControl;
 
 
-  constructor(private patientService:FirebaseServiceService){}
+  constructor(private patientService:FirebaseServiceService, private router: Router){}
 
   ngOnInit(){
     this.createFormControls();
@@ -78,6 +79,7 @@ export class AddPatFormComponent implements OnInit {
 
   onCancel(){
     this.myform.reset();
+    this.router.navigate(['home']);
   }
 
 }
