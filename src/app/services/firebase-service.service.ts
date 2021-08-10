@@ -24,13 +24,14 @@ export class FirebaseServiceService {
   // );
 
   //READ
-  patient(){
-    this.firestorePatientsCollection.get().subscribe(at=>{
+  getAllPatients(){
+    const temp = this.firestorePatientsCollection.get().subscribe(at=>{
       const temp = at.docs.map(item=>{
         return item.data();
       });
       console.log(temp);
     });
+    return temp;
   }
 
   //CREATE
