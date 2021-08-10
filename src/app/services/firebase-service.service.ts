@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Patient } from '../models/patient.model';
 
@@ -9,30 +10,32 @@ import { Patient } from '../models/patient.model';
 })
 export class FirebaseServiceService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) { 
+    this.patients = this.firestorePatientsCollection.valueChanges();
+   }
   firestorePatientsCollection = this.firestore.collection('patients');
+  patients!: Observable<any[]>;
 
-  //READ
-  // patients$ = this.firestorePatientsCollection.snapshotChanges().pipe(
-  //   map(actions=>{
-  //     return actions.map(at=>{
-  //       const a = at.payload.doc;
-  //       const b = a.id;
-  //       return {b, ...(a.data() as {})} as Patient;
-  //     })
-  //   })
-  // );
-
-  //READ
   getAllPatients(){
-    const temp = this.firestorePatientsCollection.get().subscribe(at=>{
-      const temp = at.docs.map(item=>{
-        return item.data();
-      });
-      console.log(temp);
-    });
-    return temp;
+    
+    return this.patients
   }
+
+  //READ
+  // getAllPatients(){
+  //   const allPatients = this.firestorePatientsCollection.snapshotChanges().pipe(map(patients=>{
+  //     const patient = patients[0];
+  //     if (patient){
+  //       const data = patient.payload.doc.data() as Patient[];
+  //       // const id = patient.payload.doc.id;
+  //       return {...data};
+  //     }else {
+  //       return null;
+  //     }
+  //   }));
+  //   console.log(allPatients)
+  //   return allPatients;
+  // }
 
   //CREATE
   async addPatient(data: Patient): Promise<void>{

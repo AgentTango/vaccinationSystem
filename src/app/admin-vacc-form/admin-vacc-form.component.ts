@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Patient } from '../models/patient.model';
+import { FirebaseServiceService } from '../services/firebase-service.service';
 
 
 @Component({
@@ -8,9 +11,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminVaccFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firebase: FirebaseServiceService) { }
+  arrOfPatients!: Patient[];
+  displayedColumns: string[] = ['name', 'dose', 'age', 'gender'];
+
 
   ngOnInit(): void {
+    this.firebase.getAllPatients().subscribe(patients=> {
+      this.arrOfPatients = patients;
+      console.log(this.arrOfPatients);
+    })
   }
 
+
 }
+

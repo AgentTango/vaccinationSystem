@@ -1,5 +1,8 @@
 <mat-toolbar color="primary">
-    <span>Vaccination Application</span>
+    <button mat-button [routerLink]="'home'" ><h3>Vaccination Application</h3></button>
+    <div class="10px"></div>
+    <button mat-button [routerLink]="'addPatForm'" >Add Patient</button>
+    <button mat-button [routerLink]="'adminVaccForm'" >Administer Vaccination</button>
     <div class="spacer"></div>
     <button mat-flat-button color="accent" (click)="auth.signOut()" [hidden]="!auth.isLoggedIn" >Log Out</button>
     <button mat-flat-button color="accent" (click)="auth.googleSignIn()" [hidden]="auth.isLoggedIn" >Log In</button>

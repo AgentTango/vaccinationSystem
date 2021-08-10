@@ -9,7 +9,7 @@ import {
  } from "@angular/fire/firestore";
  import { Observable, of } from "rxjs";
  import { switchMap } from "rxjs/operators";
- import { User } from "./user.model";
+ import { User } from "../models/user.model";
 import { AuthPageComponent } from '../auth-page/auth-page.component';
 
 @Injectable({

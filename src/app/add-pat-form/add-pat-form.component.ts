@@ -15,6 +15,8 @@ export class AddPatFormComponent implements OnInit {
   myform!: FormGroup;
   bloodGroupOptions!:string[];
   name!: FormControl;
+  dose!: FormControl;
+  doseOptions!:string[];
   // lastName!: FormControl;
   dob!: FormControl;
   gender!:FormControl;
@@ -36,7 +38,8 @@ export class AddPatFormComponent implements OnInit {
     this.name = new FormControl('', Validators.required);
     // this.lastName = new FormControl('', Validators.required);
     this.dob = new FormControl('', Validators.required);
-    this.dob = new FormControl("", Validators.required);
+    this.doseOptions = ["Dose 1", "Dose 2"];
+    this.dose = new FormControl(this.doseOptions[0].toString(), Validators.required);
     this.genderOptions = ["Male", "Female", "Others"];
     this.gender = new FormControl(this.genderOptions[0].toString(), Validators.required);
     this.birthLocation = new FormControl("", Validators.required);
@@ -56,6 +59,7 @@ export class AddPatFormComponent implements OnInit {
       bloodGroup: this.bloodGroup,
       weight: this.weight,
       height: this.height,
+      dose: this.dose
     });
   }
 
@@ -63,6 +67,11 @@ export class AddPatFormComponent implements OnInit {
     //send to firebase
     this.patientService.addPatient(this.myform.value);
     console.log(this.myform.value);
+    this.myform.reset();
+  }
+
+  onCancel(){
+    this.myform.reset();
   }
 
 }
