@@ -17,6 +17,8 @@ export class AddPatFormComponent implements OnInit {
   name!: FormControl;
   dose!: FormControl;
   doseOptions!:string[];
+  givenOn!:FormControl;
+  brandGiven!:FormControl;
   // lastName!: FormControl;
   dob!: FormControl;
   gender!:FormControl;
@@ -38,6 +40,8 @@ export class AddPatFormComponent implements OnInit {
     this.name = new FormControl('', Validators.required);
     // this.lastName = new FormControl('', Validators.required);
     this.dob = new FormControl('', Validators.required);
+    this.givenOn = new FormControl('', Validators.required);
+    this.brandGiven = new FormControl('', Validators.required);
     this.doseOptions = ["Dose 1", "Dose 2"];
     this.dose = new FormControl(this.doseOptions[0].toString(), Validators.required);
     this.genderOptions = ["Male", "Female", "Others"];
@@ -59,7 +63,9 @@ export class AddPatFormComponent implements OnInit {
       bloodGroup: this.bloodGroup,
       weight: this.weight,
       height: this.height,
-      dose: this.dose
+      dose: this.dose,
+      givenOn: this.givenOn,
+      brandGiven: this.brandGiven
     });
   }
 

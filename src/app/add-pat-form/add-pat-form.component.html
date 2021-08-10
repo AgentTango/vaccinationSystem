@@ -6,10 +6,10 @@
           'has-danger': name.invalid && (name.dirty || name.touched),
           'has-success': name.valid && (name.dirty || name.touched)
         }">
-                <label>First Name</label>
+                <label>Name</label>
                 <input type="text" class="form-control" formControlName="name" required>
                 <div class="form-control-feedback" *ngIf="name.errors && (name.dirty || name.touched)">
-                    <p *ngIf="name.errors.required">First Name is required</p>
+                    <p *ngIf="name.errors.required">Name is required</p>
                 </div>
             </div>
 
@@ -21,10 +21,10 @@
           'has-danger': dob.invalid && (dob.dirty || dob.touched),
           'has-success': dob.valid && (dob.dirty || dob.touched)
      }">
-            <label>dob</label>
-            <input type="date" class="form-control" formControlName="dob" required>
+            <label>Age</label>
+            <input type="text" class="form-control" formControlName="dob" required>
             <div class="form-control-feedback" *ngIf="dob.errors && (dob.dirty || dob.touched)">
-                <p *ngIf="dob.errors.required">dob is required</p>
+                <p *ngIf="dob.errors.required">Age is required</p>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
           'has-danger': gender.invalid && (gender.dirty || gender.touched),
           'has-success': gender.valid && (gender.dirty || gender.touched)
      }">
-            <label>gender</label>
+            <label>Gender</label>
             <select name="dropdown" id="dropdown" class="form-control" formControlName="gender" required>
                 <option *ngFor="let genderItem of genderOptions" [ngValue]="genderItem">{{genderItem}}
                 </option>
@@ -47,11 +47,11 @@
           'has-danger': birthLocation.invalid && (birthLocation.dirty || birthLocation.touched),
           'has-success': birthLocation.valid && (birthLocation.dirty || birthLocation.touched)
      }">
-            <label>birthLocation</label>
+            <label>Place of Birth</label>
             <input type="text" class="form-control" formControlName="birthLocation" required>
             <div class="form-control-feedback"
                 *ngIf="birthLocation.errors && (birthLocation.dirty || birthLocation.touched)">
-                <p *ngIf="birthLocation.errors.required">birthLocation is required</p>
+                <p *ngIf="birthLocation.errors.required">Place of Birth is required</p>
             </div>
         </div>
 
@@ -59,26 +59,62 @@
          'has-danger': bloodGroup.invalid && (bloodGroup.dirty || bloodGroup.touched),
          'has-success': bloodGroup.valid && (bloodGroup.dirty || bloodGroup.touched)
     }">
-            <label>Title</label>
+            <label>Blood Group</label>
             <select name="dropdown" id="dropdown" class="form-control" formControlName="bloodGroup" required>
                 <option *ngFor="let bloodGroupItem of bloodGroupOptions" [ngValue]="bloodGroupItem">{{bloodGroupItem}}
                 </option>
             </select>
 
             <div class="form-control-feedback" *ngIf="bloodGroup.errors && (bloodGroup.dirty || bloodGroup.touched)">
-                <p *ngIf="bloodGroup.errors.required">bloodGroup is required</p>
+                <p *ngIf="bloodGroup.errors.required">Blood Group is required</p>
             </div>
         </div>
 
+        <div class="form-group" [ngClass]="{
+            'has-danger': dose.invalid && (dose.dirty || dose.touched),
+            'has-success': dose.valid && (dose.dirty || dose.touched)
+       }">
+               <label>Dose</label>
+               <select name="dropdown" id="dropdown" class="form-control" formControlName="dose" required>
+                   <option *ngFor="let doseItem of doseOptions" [ngValue]="doseItem">{{doseItem}}
+                   </option>
+               </select>
+   
+               <div class="form-control-feedback" *ngIf="dose.errors && (dose.dirty || dose.touched)">
+                   <p *ngIf="dose.errors.required">Dose is required</p>
+               </div>
+           </div>
+
+           <div class="form-group" [ngClass]="{
+            'has-danger': givenOn.invalid && (givenOn.dirty || givenOn.touched),
+            'has-success': givenOn.valid && (givenOn.dirty || givenOn.touched)
+       }">
+              <label>Given On</label>
+              <input type="date" class="form-control" formControlName="givenOn" required>
+              <div class="form-control-feedback" *ngIf="givenOn.errors && (givenOn.dirty || givenOn.touched)">
+                  <p *ngIf="givenOn.errors.required">Date of Vaccination is required</p>
+              </div>
+          </div>
+
+           <div class="form-group" [ngClass]="{
+            'has-danger': brandGiven.invalid && (brandGiven.dirty || brandGiven.touched),
+            'has-success': brandGiven.valid && (brandGiven.dirty || brandGiven.touched)
+       }">
+              <label>Brand Given</label>
+              <input type="text" class="form-control" formControlName="brandGiven" required>
+              <div class="form-control-feedback" *ngIf="brandGiven.errors && (brandGiven.dirty || brandGiven.touched)">
+                  <p *ngIf="brandGiven.errors.required">Brand of Vaccination is required</p>
+              </div>
+          </div>
 
         <div class="form-group" [ngClass]="{
           'has-danger': height.invalid && (height.dirty || height.touched),
           'has-success': height.valid && (height.dirty || height.touched)
      }">
-            <label>height</label>
+            <label>Height</label>
             <input type="text" class="form-control" formControlName="height" required>
             <div class="form-control-feedback" *ngIf="height.errors && (height.dirty || height.touched)">
-                <p *ngIf="height.errors.required">height is required</p>
+                <p *ngIf="height.errors.required">Height is required</p>
             </div>
         </div>
 
@@ -86,10 +122,10 @@
           'has-danger': weight.invalid && (weight.dirty || weight.touched),
           'has-success': weight.valid && (weight.dirty || weight.touched)
      }">
-            <label>weight</label>
+            <label>Weight</label>
             <input type="text" class="form-control" formControlName="weight" required>
             <div class="form-control-feedback" *ngIf="weight.errors && (weight.dirty || weight.touched)">
-                <p *ngIf="weight.errors.required">weight is required</p>
+                <p *ngIf="weight.errors.required">Weight is required</p>
             </div>
         </div>
 

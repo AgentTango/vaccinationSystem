@@ -7,22 +7,28 @@
         </ng-container>
     
         
-        <ng-container matColumnDef="dose">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header > Dose </th>
-            <td mat-cell *matCellDef="let patient"> {{patient.dose}} </td>
-        </ng-container>
-    
-        
         <ng-container matColumnDef="age">
             <th mat-header-cell *matHeaderCellDef mat-sort-header > Date of Birth </th>
             <td mat-cell *matCellDef="let patient"> {{patient.dob}} </td>
         </ng-container>
     
         
-        <ng-container matColumnDef="gender">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header > Gender </th>
-            <td mat-cell *matCellDef="let patient"> {{patient.gender}} </td>
+        <ng-container matColumnDef="brandGiven">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > Brand Of Vaccine </th>
+            <td mat-cell *matCellDef="let patient"> {{patient.brandGiven}} </td>
         </ng-container>
+    
+        
+        <ng-container matColumnDef="dueDate">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > Date Due </th>
+            <td mat-cell *matCellDef="let patient"> {{patient.dueDate}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="givenOn">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header > Given On </th>
+            <td mat-cell *matCellDef="let patient"> {{patient.givenOn}} </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
