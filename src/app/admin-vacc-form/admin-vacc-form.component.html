@@ -1,1 +1,118 @@
-<p>admin-vacc-form works!</p>
+<div class="container">
+    <form novalidate [formGroup]="myform">
+
+        <fieldset formGroupName="name">
+            <div class="form-group" [ngClass]="{
+          'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+          'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+        }">
+                <label>First Name</label>
+                <input type="text" class="form-control" formControlName="firstName" required>
+                <div class="form-control-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                    <p *ngIf="firstName.errors.required">First Name is required</p>
+                </div>
+
+                <!--
+          <pre>Valid? {{ myform.controls.name.controls.firstName.valid }}</pre>
+          <pre>Dirty? {{ myform.controls.name.controls.firstName.dirty }}</pre>
+        -->
+            </div>
+
+            <div class="form-group" [ngClass]="{
+          'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
+          'has-success': lastName.valid && (lastName.dirty || lastName.touched)
+        }">
+                <label>Last Name</label>
+                <input type="text" class="form-control" formControlName="lastName" required>
+                <div class="form-control-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                    <p *ngIf="lastName.errors.required">Last Name is required</p>
+                </div>
+            </div>
+        </fieldset>
+
+
+        <div class="form-group" [ngClass]="{
+          'has-danger': dob.invalid && (dob.dirty || dob.touched),
+          'has-success': dob.valid && (dob.dirty || dob.touched)
+     }">
+            <label>dob</label>
+            <input type="date" class="form-control" formControlName="dob" required>
+            <div class="form-control-feedback" *ngIf="dob.errors && (dob.dirty || dob.touched)">
+                <p *ngIf="dob.errors.required">dob is required</p>
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{
+          'has-danger': gender.invalid && (gender.dirty || gender.touched),
+          'has-success': gender.valid && (gender.dirty || gender.touched)
+     }">
+            <label>gender</label>
+            <input type="text" class="form-control" formControlName="gender" required>
+            <div class="form-control-feedback" *ngIf="gender.errors && (gender.dirty || gender.touched)">
+                <p *ngIf="gender.errors.required">gender is required</p>
+
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{
+          'has-danger': birthLocation.invalid && (birthLocation.dirty || birthLocation.touched),
+          'has-success': birthLocation.valid && (birthLocation.dirty || birthLocation.touched)
+     }">
+            <label>birthLocation</label>
+            <input type="text" class="form-control" formControlName="birthLocation" required>
+            <div class="form-control-feedback"
+                *ngIf="birthLocation.errors && (birthLocation.dirty || birthLocation.touched)">
+                <p *ngIf="birthLocation.errors.required">birthLocation is required</p>
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{
+         'has-danger': bloodGroup.invalid && (bloodGroup.dirty || bloodGroup.touched),
+         'has-success': bloodGroup.valid && (bloodGroup.dirty || bloodGroup.touched)
+    }">
+            <label>Title</label>
+            <select name="dropdown" id="dropdown" class="form-control" formControlName="bloodGroup" required>
+                <option *ngFor="let bloodGroupItem of bloodGroupOptions" [ngValue]="bloodGroupItem">{{bloodGroupItem}}
+                </option>
+            </select>
+
+            <div class="form-control-feedback" *ngIf="bloodGroup.errors && (bloodGroup.dirty || bloodGroup.touched)">
+                <p *ngIf="bloodGroup.errors.required">bloodGroup is required</p>
+            </div>
+        </div>
+
+
+        <div class="form-group" [ngClass]="{
+          'has-danger': height.invalid && (height.dirty || height.touched),
+          'has-success': height.valid && (height.dirty || height.touched)
+     }">
+            <label>height</label>
+            <input type="text" class="form-control" formControlName="height" required>
+            <div class="form-control-feedback" *ngIf="height.errors && (height.dirty || height.touched)">
+                <p *ngIf="height.errors.required">height is required</p>
+            </div>
+        </div>
+
+        <div class="form-group" [ngClass]="{
+          'has-danger': weight.invalid && (weight.dirty || weight.touched),
+          'has-success': weight.valid && (weight.dirty || weight.touched)
+     }">
+            <label>weight</label>
+            <input type="text" class="form-control" formControlName="weight" required>
+            <div class="form-control-feedback" *ngIf="weight.errors && (weight.dirty || weight.touched)">
+                <p *ngIf="weight.errors.required">weight is required</p>
+            </div>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block" (click)="onRegister()"
+            [disabled]="myform.invalid">Submit</button>
+        <!--
+      <pre>{{ password.errors | json }}</pre>
+    -->
+
+
+
+        <pre>{{myform.value | json}}</pre>
+    </form>
+</div>
